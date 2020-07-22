@@ -22,7 +22,7 @@ const Register = ({setAlert}) => {
         e.preventDefault();
         if (password !== password2) {
             console.log('Password do not match');
-            setAlert('Password do not match', 'danger');
+            setAlert('Password do not match', 'error');
             return '';
         }
         console.log('SUCCESS');
