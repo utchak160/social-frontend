@@ -1,7 +1,12 @@
 import React, {useState} from "react";
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {setAlert} from "../../store/actions/alert.action";
+import {login} from "../../store/actions/auth.action";
+import PropTypes from 'prop-types';
 
-const Login = () => {
+const Login = ({setAlert, login, isAuthenticated}) => {
+    const history = useHistory();
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -16,6 +21,11 @@ const Login = () => {
     const onSubmit = e => {
         e.preventDefault();
         console.log(formData);
+        login({email, password});
+    }
+
+    if (isAuthenticated) {
+        history.push('/dashboard');
     }
     return (
         <section className="container">
@@ -50,4 +60,14 @@ const Login = () => {
     )
 }
 
-export default Login;
+Login.propType = {
+    setAlert: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, {setAlert, login})(Login);

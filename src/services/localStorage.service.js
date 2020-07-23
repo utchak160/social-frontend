@@ -1,14 +1,11 @@
 import axios from 'axios';
-import {AUTH_TOKEN} from "../utils/constants";
 
 class LocalStorageService {
 
     getToken() {
         let token = localStorage.getItem('token');
         if (token) {
-            return {
-                token
-            };
+            return token;
         } else {
             return '';
         }
