@@ -1,12 +1,13 @@
+import axios from 'axios';
 import {AUTH_TOKEN} from "../utils/constants";
 
 class LocalStorageService {
 
     getToken() {
-        const value = localStorage.getItem(AUTH_TOKEN);
-        if (value) {
+        let token = localStorage.getItem('token');
+        if (token) {
             return {
-                value
+                token
             };
         } else {
             return '';
@@ -14,11 +15,15 @@ class LocalStorageService {
     }
 
     removeToken() {
-        localStorage.removeItem(AUTH_TOKEN);
+        localStorage.removeItem('token');
+        delete axios.defaults.headers.authorization;
     }
 
     setToken(token) {
-        localStorage.setItem(AUTH_TOKEN, `Bearer ${token}`);
+        if (token) {
+            localStorage.setItem('token', token);
+            axios.defaults.headers.authorization = `Bearer ${token}`;
+        }
     }
 }
 

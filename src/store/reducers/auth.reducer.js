@@ -1,4 +1,4 @@
-import {REGISTER_SENT, REGISTER_SUCCESS, REGISTER_FAILED} from "../../utils/actions.types";
+import {REGISTER_SENT, REGISTER_SUCCESS, REGISTER_FAILED, LOAD_USER, AUTH_ERROR} from "../../utils/actions.types";
 import {localStorageService} from '../../services/localStorage.service';
 
 const initialState = {
@@ -11,6 +11,15 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
     const {type, payload} = action
     switch (type) {
+        case LOAD_USER:
+            const token = localStorageService.getToken();
+            return {
+                ...state,
+                token,
+                isAuthenticated: true,
+                loading: false,
+                user: payload
+            };
         case REGISTER_SENT:
             return {
                 ...state,
@@ -25,6 +34,7 @@ const authReducer = (state = initialState, action) => {
                 loading: true
             };
         case REGISTER_FAILED:
+        case AUTH_ERROR:
             localStorageService.removeToken();
             return {
                 ...state,

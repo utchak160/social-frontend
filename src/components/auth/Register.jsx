@@ -29,7 +29,7 @@ const Register = ({setAlert, register}) => {
         }
         console.log('SUCCESS');
         register({name, email, password});
-        // history.push('/login');
+        history.push('/login');
     };
 
     return (

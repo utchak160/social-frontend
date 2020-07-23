@@ -3,7 +3,7 @@ import {localStorageService} from "./localStorage.service";
 import {from} from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-export class ApiService {
+class ApiService {
 
     static _instance;
 
@@ -83,3 +83,5 @@ export class ApiService {
         return catchError(error);
     }
 }
+
+export const apiService = new ApiService();
