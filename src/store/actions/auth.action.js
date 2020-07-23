@@ -1,4 +1,14 @@
-import {REGISTER_SENT, REGISTER_SUCCESS, REGISTER_FAILED, LOAD_USER, AUTH_ERROR, LOGIN_SENT, LOGIN_SUCCESS, LOGIN_FAILED} from "../../utils/actions.types";
+import {
+    REGISTER_SENT,
+    REGISTER_SUCCESS,
+    REGISTER_FAILED,
+    LOAD_USER,
+    AUTH_ERROR,
+    LOGIN_SENT,
+    LOGIN_SUCCESS,
+    LOGIN_FAILED,
+    LOGOUT
+} from "../../utils/actions.types";
 import axios from 'axios';
 import {setAlert} from "./alert.action";
 import {localStorageService} from "../../services/localStorage.service";
@@ -96,4 +106,10 @@ export const login = ({email, password}) => async dispatch => {
             type: LOGIN_FAILED
         });
     }
+}
+
+export const logout = () => dispatch => {
+    dispatch({
+        type: LOGOUT
+    });
 }
