@@ -68,7 +68,7 @@ export class ApiService {
     }
 
     _buildHeader(useAuthHeaders) {
-        let headers = {contentType: 'application/json'}
+        let headers = {'Content-Type': 'application/json'}
         if (useAuthHeaders) {
             headers = {
                 ...headers,

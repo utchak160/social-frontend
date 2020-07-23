@@ -28,6 +28,7 @@ const authReducer = (state = initialState, action) => {
             localStorageService.removeToken();
             return {
                 ...state,
+                token: null,
                 isAuthenticated: false,
                 loading: false
             };
@@ -35,3 +36,5 @@ const authReducer = (state = initialState, action) => {
             return state;
     }
 }
+
+export default authReducer;

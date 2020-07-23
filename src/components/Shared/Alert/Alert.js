@@ -26,13 +26,12 @@ const AlertBar = ({alerts}) => {
     );
 }
 
-
 Alert.propType = {
     alerts: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
-    alerts: state.alertReducer
+    alerts: state.alert
 })
 
 export default connect(mapStateToProps)(AlertBar);

@@ -4,9 +4,13 @@ class LocalStorageService {
 
     getToken() {
         const value = localStorage.getItem(AUTH_TOKEN);
-        return {
-            value
-        };
+        if (value) {
+            return {
+                value
+            };
+        } else {
+            return '';
+        }
     }
 
     removeToken() {
@@ -14,7 +18,7 @@ class LocalStorageService {
     }
 
     setToken(token) {
-        localStorage.setItem(AUTH_TOKEN, token);
+        localStorage.setItem(AUTH_TOKEN, `Bearer ${token}`);
     }
 }
 
