@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {makeStyles} from '@material-ui/core/styles';
-import Alert from '@material-ui/lab/Alert';
+// import Alert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -13,20 +15,71 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const AlertBar = ({alerts}) => {
+// const AlertBar = ({alerts}) => {
+//     const classes = useStyles();
+//     return (
+//         alerts !== null &&
+//         alerts.length > 0 &&
+//         alerts.map(alert => (
+//             <div key={alert.id} className={classes.root}>
+//                 <Alert severity={alert.alertType}>{alert.msg}</Alert>
+//             </div>
+//         ))
+//     );
+// }
+
+// Alert.propType = {
+//     alerts: PropTypes.func.isRequired,
+// }
+//
+// const mapStateToProps = state => ({
+//     alerts: state.alert
+// })
+
+
+const Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+const CustomizedSnackbars = ({alerts}) => {
     const classes = useStyles();
+    const [open, setOpen] = React.useState(true);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
     return (
         alerts !== null &&
         alerts.length > 0 &&
         alerts.map(alert => (
+            // <div key={alert.id} className={classes.root}>
+            //     <Alert severity={alert.alertType}>{alert.msg}</Alert>
+            // </div>
             <div key={alert.id} className={classes.root}>
-                <Alert severity={alert.alertType}>{alert.msg}</Alert>
+                <Snackbar open={true} autoHideDuration={2000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity={alert.alertType}>
+                        {alert.msg}
+                    </Alert>
+                </Snackbar>
+                {/*<Alert severity="error">This is an error message!</Alert>*/}
+                {/*<Alert severity="warning">This is a warning message!</Alert>*/}
+                {/*<Alert severity="info">This is an information message!</Alert>*/}
+                {/*<Alert severity="success">This is a success message!</Alert>*/}
             </div>
         ))
     );
 }
 
-Alert.propType = {
+CustomizedSnackbars.propType = {
     alerts: PropTypes.func.isRequired,
 }
 
@@ -34,4 +87,4 @@ const mapStateToProps = state => ({
     alerts: state.alert
 })
 
-export default connect(mapStateToProps)(AlertBar);
+export default connect(mapStateToProps)(CustomizedSnackbars);
