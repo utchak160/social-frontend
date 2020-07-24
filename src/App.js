@@ -13,6 +13,7 @@ import store from './store/store';
 import {localStorageService} from "./services/localStorage.service";
 import {loadUser} from "./store/actions/auth.action";
 import Dashboard from "./components/dashboard/dashboard";
+import AuthRoute from "./guards/auth.guard";
 
 const token = localStorageService.getToken();
 if (token) {
@@ -35,7 +36,7 @@ const App = () => {
                     <Switch>
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/register" component={Register} />
-                        <Route exact path="/dashboard" component={Dashboard} />
+                        <AuthRoute exact path="/dashboard" component={Dashboard} />
                     </Switch>
                 </Fragment>
             </Router>
