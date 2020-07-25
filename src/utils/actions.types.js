@@ -16,3 +16,4 @@ export const LOGOUT = 'LOGOUT';
 //Profile Actions
 export const GET_PROFILE = '[PROFILE] FETCH_USER';
 export const PROFILE_ERROR = '[PROFILE] ERROR';
+export const CLEAR_PROFILE = '[PROFILE] CLEAR'
