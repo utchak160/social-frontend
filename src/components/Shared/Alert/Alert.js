@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {makeStyles} from '@material-ui/core/styles';
-// import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
@@ -28,14 +27,6 @@ const useStyles = makeStyles((theme) => ({
 //     );
 // }
 
-// Alert.propType = {
-//     alerts: PropTypes.func.isRequired,
-// }
-//
-// const mapStateToProps = state => ({
-//     alerts: state.alert
-// })
-
 
 const Alert = (props) => {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -58,9 +49,6 @@ const CustomizedSnackbars = ({alerts}) => {
         alerts !== null &&
         alerts.length > 0 &&
         alerts.map(alert => (
-            // <div key={alert.id} className={classes.root}>
-            //     <Alert severity={alert.alertType}>{alert.msg}</Alert>
-            // </div>
             <div key={alert.id} className={classes.root}>
                 <Snackbar open={open} autoHideDuration={2000} onClose={(event, reason) => handleClose(event, reason)}>
                     <Alert onClose={(e) => handleClose(e)} severity={alert.alertType}>
