@@ -6,6 +6,7 @@ import Landing from "./components/Landing/Landing";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Alert from "./components/Shared/Alert/Alert";
+import CreateProfile from "./components/profile-form/createProfile";
 
 //Redux
 import {Provider} from 'react-redux';
@@ -37,6 +38,7 @@ const App = () => {
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/register" component={Register} />
                         <AuthRoute exact path="/dashboard" component={Dashboard} />
+                        <AuthRoute exact path="/create-profile" component={CreateProfile} />
                     </Switch>
                 </Fragment>
             </Router>

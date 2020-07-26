@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 import {Link, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {setAlert} from "../../store/actions/alert.action";
 import {login} from "../../store/actions/auth.action";
 import PropTypes from 'prop-types';
 
-const Login = ({setAlert, login, isAuthenticated}) => {
+const Login = ({login, isAuthenticated}) => {
     const history = useHistory();
     const [formData, setFormData] = useState({
         email: '',
@@ -46,6 +45,7 @@ const Login = ({setAlert, login, isAuthenticated}) => {
                     <input
                         type="password"
                         placeholder="Password"
+                        autoComplete='off'
                         name="password"
                         value={password}
                         onChange={e => onChange(e)}
@@ -61,7 +61,6 @@ const Login = ({setAlert, login, isAuthenticated}) => {
 }
 
 Login.propType = {
-    setAlert: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool,
 }
@@ -70,4 +69,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps, {setAlert, login})(Login);
+export default connect(mapStateToProps, {login})(Login);

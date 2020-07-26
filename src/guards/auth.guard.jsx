@@ -3,7 +3,7 @@ import {Route, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-const AuthRoute = ({component: Component, auth: {isAuthenticated, loading}, ...rest}) => (
+const AuthRoute = ({auth: {isAuthenticated, loading}, ...rest}) => (
     <Route
         {...rest}
         render={props =>

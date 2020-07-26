@@ -1,4 +1,4 @@
-import {GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE} from '../../utils/actions.types';
+import {GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, PROFILE_SENT, PROFILE_ADDED} from '../../utils/actions.types';
 
 const initialState = {
     profile: null,
@@ -37,6 +37,18 @@ const profileReducer = (state = initialState, action) => {
                 profileLoaded: false,
                 error: null
             }
+        case PROFILE_SENT:
+            return {
+                ...state,
+                loading: true
+            };
+        case PROFILE_ADDED:
+            return {
+                ...state,
+                loading: false,
+                profile: payload,
+                profileLoaded: true
+            };
         default:
             return state;
     }

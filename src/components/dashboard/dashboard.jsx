@@ -9,7 +9,7 @@ import {getCurrentProfile} from "../../store/actions/profile.action";
 const Dashboard = ({auth: {user}, profile: {profile, loading}, getCurrentProfile}) => {
     useEffect(() => {
         getCurrentProfile()
-    }, []);
+    }, [getCurrentProfile]);
 
 
     return loading && profile === null ? <Spinner/> : (

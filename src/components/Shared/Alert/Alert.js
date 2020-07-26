@@ -45,9 +45,6 @@ const CustomizedSnackbars = ({alerts}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(true);
 
-    const handleClick = () => {
-        setOpen(true);
-    };
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -65,8 +62,8 @@ const CustomizedSnackbars = ({alerts}) => {
             //     <Alert severity={alert.alertType}>{alert.msg}</Alert>
             // </div>
             <div key={alert.id} className={classes.root}>
-                <Snackbar open={true} autoHideDuration={2000} onClose={handleClose}>
-                    <Alert onClose={handleClose} severity={alert.alertType}>
+                <Snackbar open={open} autoHideDuration={2000} onClose={(event, reason) => handleClose(event, reason)}>
+                    <Alert onClose={(e) => handleClose(e)} severity={alert.alertType}>
                         {alert.msg}
                     </Alert>
                 </Snackbar>

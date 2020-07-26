@@ -34,10 +34,10 @@ export const loadUser = () => async dispatch => {
                 payload: res.data
             })
     } catch (e) {
-        console.log(e);
         dispatch({
             type: AUTH_ERROR
         })
+        dispatch(setAlert('Unauthorized', 'error'))
     }
 }
 
@@ -116,4 +116,5 @@ export const logout = () => dispatch => {
     dispatch({
         type: CLEAR_PROFILE
     });
+    dispatch(setAlert('Logout Successfully', 'success'))
 }
