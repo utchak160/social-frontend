@@ -40,7 +40,7 @@ const AddEducation = ({addEducation, history}) => {
     return (
         <section className="container">
             <h1 className="large text-primary">
-                Add An Experience
+                Add Your Education
             </h1>
             <p className="lead">
                 <i className="fas fa-graduation-cap" /> Add any school, bootcamp, etc that
@@ -49,15 +49,15 @@ const AddEducation = ({addEducation, history}) => {
             <small>* = required field</small>
             <form className="form" onSubmit={(e) => onSubmit(e)}>
                 <div className="form-group">
-                    <input type="text" placeholder="* Job Title" name="school" value={school} onChange={e => onChange(e)}
+                    <input type="text" placeholder="* School or Bootcamp" name="school" value={school} onChange={e => onChange(e)}
                            required/>
                 </div>
                 <div className="form-group">
-                    <input type="text" placeholder="* Company" name="degree" value={degree}
+                    <input type="text" placeholder="* Degree or Certificate" name="degree" value={degree}
                            onChange={e => onChange(e)} required/>
                 </div>
                 <div className="form-group">
-                    <input type="text" placeholder="Location" name="fieldofstudy" value={fieldofstudy}
+                    <input type="text" placeholder="Field Of Study" name="fieldofstudy" value={fieldofstudy}
                            onChange={e => onChange(e)}/>
                 </div>
                 <div className="form-group">
@@ -84,7 +84,7 @@ const AddEducation = ({addEducation, history}) => {
               name="description"
               cols="30"
               rows="5"
-              placeholder="Job Description"
+              placeholder="Program Description"
               value={description} onChange={e => onChange(e)}
           />
                 </div>
