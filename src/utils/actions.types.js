@@ -14,13 +14,10 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGOUT = 'LOGOUT';
 
 //Profile Actions
-export const GET_PROFILE = '[PROFILE] FETCH_USER';
+export const GET_PROFILE = '[PROFILE] FETCHED';
 export const PROFILE_ERROR = '[PROFILE] ERROR';
 export const CLEAR_PROFILE = '[PROFILE] CLEAR';
-export const PROFILE_SENT = '[PROFILE] SENT';
+export const PROFILE_SENT = '[PROFILE] REQUEST';
 export const PROFILE_ADDED = '[PROFILE] ADDED';
-export const PROFILE_FAILED = '[PROFILE] FAILED';
-export const EXP_ADDED = '[PROFILE] EXP_ADDED';
-export const EXP_FAILED = '[PROFILE] EXP_FAILED';
-export const EDU_ADDED = '[PROFILE] EDU_ADDED';
-export const EDU_FAILED = '[PROFILE] EDU_FAILED';
+export const PROFILE_UPDATED = '[PROFILE] UPDATED';
+

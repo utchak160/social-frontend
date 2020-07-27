@@ -8,14 +8,17 @@ import Register from "./components/auth/Register";
 import Alert from "./components/Shared/Alert/Alert";
 import CreateProfile from "./components/profile-form/createProfile";
 import EditProfile from "./components/profile-form/editProfile";
-
-//Redux
-import {Provider} from 'react-redux';
-import store from './store/store';
 import {localStorageService} from "./services/localStorage.service";
 import {loadUser} from "./store/actions/auth.action";
 import Dashboard from "./components/dashboard/dashboard";
 import AuthRoute from "./guards/auth.guard";
+import AddExperience from "./components/profile-form/addExperience";
+import AddEducation from "./components/profile-form/addEducation";
+
+//Redux
+import {Provider} from 'react-redux';
+import store from './store/store';
+
 
 const token = localStorageService.getToken();
 if (token) {
@@ -34,13 +37,15 @@ const App = () => {
                 <Fragment>
                     <Navbar/>
                     <Route exact path="/" component={Landing}/>
-                    <Alert />
+                    <Alert/>
                     <Switch>
-                        <Route exact path="/login" component={Login} />
-                        <Route exact path="/register" component={Register} />
-                        <AuthRoute exact path="/dashboard" component={Dashboard} />
-                        <AuthRoute exact path="/create-profile" component={CreateProfile} />
-                        <AuthRoute exact path="/edit-profile" component={EditProfile} />
+                        <Route exact path="/login" component={Login}/>
+                        <Route exact path="/register" component={Register}/>
+                        <AuthRoute exact path="/dashboard" component={Dashboard}/>
+                        <AuthRoute exact path="/create-profile" component={CreateProfile}/>
+                        <AuthRoute exact path="/edit-profile" component={EditProfile}/>
+                        <AuthRoute exact path="/add-experience" component={AddExperience}/>
+                        <AuthRoute exact path="/add-education" component={AddEducation}/>
                     </Switch>
                 </Fragment>
             </Router>
