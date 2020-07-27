@@ -1,4 +1,15 @@
-import {REGISTER_SENT, REGISTER_SUCCESS, REGISTER_FAILED, LOAD_USER, AUTH_ERROR, LOGIN_SENT, LOGIN_SUCCESS, LOGIN_FAILED, LOGOUT} from "../../utils/actions.types";
+import {
+    REGISTER_SENT,
+    REGISTER_SUCCESS,
+    REGISTER_FAILED,
+    LOAD_USER,
+    AUTH_ERROR,
+    LOGIN_SENT,
+    LOGIN_SUCCESS,
+    LOGIN_FAILED,
+    LOGOUT,
+    ACCOUNT_DELETED
+} from "../../utils/actions.types";
 import {localStorageService} from '../../services/localStorage.service';
 
 const initialState = {
@@ -39,9 +50,11 @@ const authReducer = (state = initialState, action) => {
         case LOGIN_FAILED:
         case AUTH_ERROR:
         case LOGOUT:
+        case ACCOUNT_DELETED:
             localStorageService.removeToken();
             return {
                 ...state,
+                user: null,
                 token: null,
                 isAuthenticated: false,
                 loading: false

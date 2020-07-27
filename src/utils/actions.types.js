@@ -21,3 +21,6 @@ export const PROFILE_SENT = '[PROFILE] REQUEST';
 export const PROFILE_ADDED = '[PROFILE] ADDED';
 export const PROFILE_UPDATED = '[PROFILE] UPDATED';
 
+
+//Account
+export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
