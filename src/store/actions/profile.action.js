@@ -194,7 +194,7 @@ export const deleteEducation = (id) => async dispatch => {
 }
 
 //Delete Account
-export const deleteAccount = (history) => async dispatch => {
+export const deleteAccount = () => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -211,7 +211,6 @@ export const deleteAccount = (history) => async dispatch => {
                 type: ACCOUNT_DELETED,
             });
             dispatch(CLEAR_PROFILE);
-            history.push('/login');
             dispatch(setAlert('Account Deleted', 'info'));
         } else {
             return '';

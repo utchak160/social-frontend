@@ -1,4 +1,4 @@
-import React, {useEffect, Fragment, useHistory} from "react";
+import React, {useEffect, Fragment} from "react";
 import {Link} from 'react-router-dom';
 import DashboardAction from "./dashboard-action";
 import {connect} from 'react-redux';
@@ -11,7 +11,6 @@ import {deleteAccount} from "../../store/actions/profile.action";
 
 
 const Dashboard = ({auth: {user}, profile: {profile, loading}, deleteAccount, getCurrentProfile}) => {
-    const history = useHistory();
     useEffect(() => {
         getCurrentProfile()
     }, [getCurrentProfile]);
@@ -29,7 +28,7 @@ const Dashboard = ({auth: {user}, profile: {profile, loading}, deleteAccount, ge
                         <Experience experience={profile.experience} />
                         <Education education={profile.education} />
                         <div className="my-2">
-                            <button onClick={() => deleteAccount(history)} className="btn btn-danger">
+                            <button onClick={() => deleteAccount()} className="btn btn-danger">
                                 <i className="fas fa-user-minus" />
                                 {' '} Delete My Account
                             </button>
