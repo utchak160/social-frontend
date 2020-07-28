@@ -13,7 +13,7 @@ export const LOAD_USER = 'LOAD_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGOUT = 'LOGOUT';
 
-//Profile Actions
+//Profiles Actions
 export const GET_PROFILE = '[PROFILE] FETCHED';
 export const GET_PROFILES = '[PROFILES] FETCHED';
 export const GET_REPOS = '[PROFILE] GET_REPOS'

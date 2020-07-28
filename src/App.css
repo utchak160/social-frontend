@@ -360,7 +360,7 @@ button {
     margin-bottom: 1rem;
 }
 
-/* Profile Page */
+/* Profiles Page */
 .profile-grid {
     display: grid;
     grid-template-areas:
@@ -540,7 +540,7 @@ button {
         display: none;
     }
 
-    /* Profile Page */
+    /* Profiles Page */
 
     .profile-top img,
     .profile img {

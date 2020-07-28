@@ -14,7 +14,7 @@ import Dashboard from "./components/dashboard/dashboard";
 import AuthRoute from "./guards/auth.guard";
 import AddExperience from "./components/profile-form/addExperience";
 import AddEducation from "./components/profile-form/addEducation";
-import Profiles from "./components/Profile/profiles";
+import Profiles from "./components/Profiles/profiles";
 
 
 //Redux

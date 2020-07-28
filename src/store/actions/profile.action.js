@@ -105,7 +105,7 @@ export const getRepos = (username) => async dispatch => {
     }
 }
 
-//Add Profile
+//Add Profiles
 export const addProfile = (formData, history, edit = false) => async dispatch => {
     const config = {
         headers: {
@@ -123,7 +123,7 @@ export const addProfile = (formData, history, edit = false) => async dispatch =>
             type: PROFILE_ADDED,
             payload: res.data
         });
-        dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
+        dispatch(setAlert(edit ? 'Profiles Updated' : 'Profiles Created', 'success'));
         history.push('/dashboard');
     } catch (e) {
         console.log('[err]', e);
