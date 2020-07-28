@@ -4,7 +4,10 @@ import {
     PROFILE_SENT,
     PROFILE_ADDED,
     PROFILE_UPDATED,
-    ACCOUNT_DELETED, CLEAR_PROFILE
+    ACCOUNT_DELETED,
+    CLEAR_PROFILE,
+    GET_PROFILES,
+    GET_REPOS
 } from '../../utils/actions.types';
 import axios from 'axios';
 import {setAlert} from "./alert.action";
@@ -23,6 +26,73 @@ export const getCurrentProfile = () => async dispatch => {
 
         dispatch({
             type: GET_PROFILE,
+            payload: res.data
+        })
+    } catch (e) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg: e.response.statusText, status: e.response.status}
+        })
+    }
+}
+
+//Get profiles
+export const getProfiles = () => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    };
+    dispatch(CLEAR_PROFILE);
+    try {
+        const res = await axios.get('profile/all', config);
+
+        dispatch({
+            type: GET_PROFILES,
+            payload: res.data
+        })
+    } catch (e) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg: e.response.statusText, status: e.response.status}
+        })
+    }
+}
+
+//Get profile by ID
+export const getProfileById = (userId) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    };
+    try {
+        const res = await axios.get(`profile/user/${userId}`, config);
+
+        dispatch({
+            type: GET_PROFILE,
+            payload: res.data
+        })
+    } catch (e) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {msg: e.response.statusText, status: e.response.status}
+        })
+    }
+}
+
+//Get user repo
+export const getRepos = (username) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    };
+    try {
+        const res = await axios.get(`profile/github/${username}`, config);
+
+        dispatch({
+            type: GET_REPOS,
             payload: res.data
         })
     } catch (e) {
