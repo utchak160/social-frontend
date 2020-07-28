@@ -12,7 +12,6 @@ import GithubRepos from "./github-repos";
 
 const Profile = ({match, getProfileById, profile: {loading, profile}, auth}) => {
     useEffect(() => {
-        console.log(match.params.id);
         getProfileById(match.params.id);
     }, [getProfileById, match.params.id])
     return (
