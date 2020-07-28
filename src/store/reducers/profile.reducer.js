@@ -5,7 +5,8 @@ import {
     PROFILE_SENT,
     PROFILE_ADDED,
     PROFILE_UPDATED,
-    GET_PROFILES
+    GET_PROFILES,
+    GET_REPOS
 } from '../../utils/actions.types';
 
 const initialState = {
@@ -34,6 +35,12 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profiles: payload,
                 loading: false,
+            }
+        case GET_REPOS:
+            return {
+                ...state,
+                repos: payload,
+                loading: false
             }
         case PROFILE_ERROR:
             return {

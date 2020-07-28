@@ -20,6 +20,7 @@ import Profiles from "./components/Profiles/profiles";
 //Redux
 import {Provider} from 'react-redux';
 import store from './store/store';
+import Profile from "./components/Profile/profile";
 
 
 const token = localStorageService.getToken();
@@ -44,6 +45,7 @@ const App = () => {
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/profiles" component={Profiles} />
+                        <Route exact path="/profile/:id" component={Profile} />
                         <AuthRoute exact path="/dashboard" component={Dashboard}/>
                         <AuthRoute exact path="/create-profile" component={CreateProfile}/>
                         <AuthRoute exact path="/edit-profile" component={EditProfile}/>
