@@ -14,6 +14,8 @@ import Dashboard from "./components/dashboard/dashboard";
 import AuthRoute from "./guards/auth.guard";
 import AddExperience from "./components/profile-form/addExperience";
 import AddEducation from "./components/profile-form/addEducation";
+import Profiles from "./components/Profile/profiles";
+
 
 //Redux
 import {Provider} from 'react-redux';
@@ -41,6 +43,7 @@ const App = () => {
                     <Switch>
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/register" component={Register}/>
+                        <Route exact path="/profiles" component={Profiles} />
                         <AuthRoute exact path="/dashboard" component={Dashboard}/>
                         <AuthRoute exact path="/create-profile" component={CreateProfile}/>
                         <AuthRoute exact path="/edit-profile" component={EditProfile}/>

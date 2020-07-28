@@ -43,7 +43,9 @@ export const getProfiles = () => async dispatch => {
             'Content-Type': 'application/json',
         }
     };
-    dispatch(CLEAR_PROFILE);
+    dispatch({
+        type: CLEAR_PROFILE
+    });
     try {
         const res = await axios.get('profile/all', config);
 
