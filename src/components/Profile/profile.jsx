@@ -28,7 +28,7 @@ const Profile = ({match, getProfileById, profile: {loading, profile}, auth}) => 
                     )}
                     <div className="profile-grid my-1">
                         <ProfileInfo profile={profile}/>
-                        {/*<ProfileAbout profile={profile}/>*/}
+                        <ProfileAbout profile={profile}/>
 
                         {profile.experience === null ? ('No experience added') : (<Fragment>
                             {profile.experience.map(exp => (

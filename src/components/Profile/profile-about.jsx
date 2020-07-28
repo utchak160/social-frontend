@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import PropTypes from 'prop-types';
 
-const ProfileAbout = ({profile: {user: name}, bio, skills}) => {
+const ProfileAbout = ({profile: { user: {name}, bio, skills}}) => {
     console.log(skills);
     return (
         <Fragment>
