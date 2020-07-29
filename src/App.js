@@ -34,7 +34,9 @@ const App = () => {
         store.dispatch(loadUser());
     }, [])
 
-    console.log = function () {
+    if (process.env.CI === true) {
+        console.log = function () {
+        }
     }
 
     return (
