@@ -34,11 +34,6 @@ const App = () => {
         store.dispatch(loadUser());
     }, [])
 
-    if (process.env.CI === true) {
-        console.log = function () {
-        }
-    }
-
     return (
         <Provider store={store}>
             <Router>
