@@ -2,7 +2,6 @@ import React, {Fragment, useEffect} from "react";
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {getGithubRepos} from "../../store/actions/profile.action";
-import {Link} from "react-router-dom";
 
 const GithubRepos = ({profile: {githubusername}, repos, getGithubRepos}) => {
     useEffect(() => {
@@ -20,8 +19,8 @@ const GithubRepos = ({profile: {githubusername}, repos, getGithubRepos}) => {
                         {repos.map(repo => (
                             <div key={repo.id} className="repo bg-white p-1 my-1">
                                 <div>
-                                    <h4><Link to={repo.html_url} target="_blank"
-                                              rel="noopener noreferrer">{repo.name}</Link></h4>
+                                    <h4><a href={repo.html_url} target="_blank"
+                                              rel="noopener noreferrer">{repo.name}</a></h4>
                                     <p>
                                         {repo.description && (repo.description)}
                                     </p>
