@@ -24,5 +24,9 @@ export const PROFILE_ADDED = '[PROFILE] ADDED';
 export const PROFILE_UPDATED = '[PROFILE] UPDATED';
 
 
+//Post Actions
+export const GET_POSTS = '[POST] GET ALL';
+export const POST_ERROR = '[POST] ERROR';
+
 //Account
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
