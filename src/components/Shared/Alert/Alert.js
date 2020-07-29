@@ -42,7 +42,7 @@ const CustomizedSnackbars = ({alerts}) => {
             return;
         }
 
-        setOpen(false);
+        setOpen(!open);
     };
 
     return (
