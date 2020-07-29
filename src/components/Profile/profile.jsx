@@ -29,27 +29,27 @@ const Profile = ({match, getProfileById, profile: {loading, profile}, auth}) => 
                         <ProfileInfo profile={profile}/>
                         <ProfileAbout profile={profile}/>
 
-                        {profile.experience === null ? ('No experience added') : (<Fragment>
-                            {profile.experience.map(exp => (
-                                <div key={exp._id} className="profile-exp bg-white p-2">
-                                    <h2 className="text-primary">Experience</h2>
-                                    <ProfileExperience experience={exp}/>
-                                </div>
-                            ))}
-                        </Fragment>)}
-
-
-                        {profile.education && (
-                            <Fragment>
-                                {profile.education.map(edu => (
-                                    <div key={edu._id} className="profile-edu bg-white p-2">
-                                        <h2 className="text-primary">Education</h2>
-                                        <ProfileEducation education={edu}/>
-                                    </div>
+                        <div className="profile-exp bg-white p-2">
+                            <h2 className="text-primary">Experience</h2>
+                            {profile.experience.length === 0 ? ('No experience added') : (<Fragment>
+                                {profile.experience.map(exp => (
+                                    <ProfileExperience key={exp._id} experience={exp}/>
                                 ))}
-                            </Fragment>
-                        )}
-                        {profile.githubusername && <GithubRepos /> }
+                            </Fragment>)}
+                        </div>
+
+
+                        <div className="profile-edu bg-white p-2">
+                            <h2 className="text-primary">Education</h2>
+                            {profile.education.length === 0 ? ('No education added') : (
+                                <Fragment>
+                                    {profile.education.map(edu => (
+                                        <ProfileEducation key={edu._id} education={edu}/>
+                                    ))}
+                                </Fragment>
+                            )}
+                        </div>
+                        {profile.githubusername && <GithubRepos/>}
                     </div>
                 </section>
             </Fragment>)}
