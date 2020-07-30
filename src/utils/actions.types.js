@@ -27,6 +27,10 @@ export const PROFILE_UPDATED = '[PROFILE] UPDATED';
 //Post Actions
 export const GET_POSTS = '[POST] GET ALL';
 export const POST_ERROR = '[POST] ERROR';
+export const UPDATE_LIKES = '[POST] UPDATE LIKES'
+export const UPDATE_COMMENTS = '[POST] UPDATE COMMENTS'
+export const DELETE_COMMENT = '[POST] DELETE COMMENT'
+export const DELETE_POST = '[POST] DELETE'
 
 //Account
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';

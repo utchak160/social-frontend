@@ -11,6 +11,11 @@ const Navbar = ({auth: {isAuthenticated, loading}, user, logout}) => {
                 <span className='hide-sm'>Hello, {user && user.name}</span>
             </li>
             <li>
+                <Link to='/posts'>
+                    <span className='hide-sm'>Posts</span>
+                </Link>
+            </li>
+            <li>
                 <Link to='/profiles'>
                     <span className='hide-sm'>Developers</span>
                 </Link>
