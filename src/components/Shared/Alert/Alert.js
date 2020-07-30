@@ -50,7 +50,7 @@ const CustomizedSnackbars = ({alerts}) => {
         alerts.length > 0 &&
         alerts.map(alert => (
             <div key={alert.id} className={classes.root}>
-                <Snackbar open={true} autoHideDuration={2000} onClose={(event, reason) => handleClose(event, reason)}>
+                <Snackbar open={true} autoHideDuration={alert.timeout} onClose={(event, reason) => handleClose(event, reason)}>
                     <Alert onClose={(e) => handleClose(e)} severity={alert.alertType}>
                         {alert.msg}
                     </Alert>

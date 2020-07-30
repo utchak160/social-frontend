@@ -3,8 +3,9 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux';
 import Moment from "react-moment";
 import PropTypes from 'prop-types';
+import {addLike, removeLike} from "../../store/actions/post.action";
 
-const PostItem = ({post: {avatar, date, _id, name, user, likes, comments, text}, auth}) => (
+const PostItem = ({post: {avatar, date, _id, name, user, likes, comments, text}, auth, addLike, removeLike}) => (
     <div className="post bg-white p-1 my-1">
         <div>
             <Link to={`/profile/${user}`}>
@@ -23,16 +24,16 @@ const PostItem = ({post: {avatar, date, _id, name, user, likes, comments, text},
             <p className="post-date">
                 Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
             </p>
-            <button type="button" className="btn btn-light">
+            <button onClick={(e) => addLike(_id)} type="button" className="btn btn-light">
                 <i className="fas fa-thumbs-up" />
-                {likes.length > 0 && (<span>{likes.length}</span>)}
+                {likes && likes.length > 0 && (<span>{likes.length}</span>)}
             </button>
-            <button type="button" className="btn btn-light">
+            <button onClick={(e) => removeLike(_id)} type="button" className="btn btn-light">
                 <i className="fas fa-thumbs-down" />
             </button>
             <Link to={`/post/${_id}`} className="btn btn-primary">
                 Discussion
-                {comments.length > 0 && (<span className='comment-count'>{comments.length}</span>)}
+                {comments && comments.length > 0 && (<span className='comment-count'>{comments.length}</span>)}
             </Link>
             {auth.isAuthenticated && user === auth.user._id && (
                 <button
@@ -55,4 +56,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps)(PostItem);
+export default connect(mapStateToProps, {addLike, removeLike})(PostItem);

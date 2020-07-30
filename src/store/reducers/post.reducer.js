@@ -27,13 +27,13 @@ const postReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                posts: state.posts.map(post => post._id === payload.id ? post.likes = payload.likes : post)
+                posts: state.posts.map(post => post._id === payload.id ? {...post, likes: payload.likes } : post)
             }
         case UPDATE_COMMENTS:
             return {
                 ...state,
                 loading: false,
-                posts: state.posts.map(post => post._id === payload.id ? post.comments = payload.comments : post)
+                posts: state.posts.map(post => post._id === payload.id ? {...post, comments: payload.comments} : post)
             }
         case DELETE_COMMENT:
             return {
