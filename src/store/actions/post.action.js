@@ -1,4 +1,12 @@
-import {GET_POSTS, POST_ERROR, DELETE_POST, UPDATE_LIKES, UPDATE_COMMENTS, DELETE_COMMENT} from "../../utils/actions.types";
+import {
+    GET_POSTS,
+    POST_ERROR,
+    DELETE_POST,
+    UPDATE_LIKES,
+    UPDATE_COMMENTS,
+    DELETE_COMMENT,
+    ADD_POST, GET_POST
+} from "../../utils/actions.types";
 import axios from 'axios'
 import {setAlert} from "./alert.action";
 
@@ -20,6 +28,30 @@ export const getAllPosts = () => async dispatch => {
             payload: res.data
         });
         dispatch(setAlert('Post fetched', 'success'));
+    } catch (e) {
+        dispatch({
+            type: POST_ERROR,
+            payload: {msg: e.response.statusText, status: e.response.status}
+        });
+    }
+}
+
+//Get post
+export const getPost = (id) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    };
+
+    try {
+        const res = await axios.get(`post/${id}`, config);
+
+        dispatch({
+            type: GET_POST,
+            payload: res.data
+        });
+        dispatch(setAlert('Post Fetched', 'error', 500));
     } catch (e) {
         dispatch({
             type: POST_ERROR,
@@ -139,10 +171,35 @@ export const deletePost = (postId) => async dispatch => {
         await axios.delete(`post/${postId}`, config);
 
         dispatch({
-            type: UPDATE_COMMENTS,
+            type: DELETE_POST,
             payload: postId
         });
         dispatch(setAlert('Post Deleted', 'error', 500));
+    } catch (e) {
+        dispatch({
+            type: POST_ERROR,
+            payload: {msg: e.response.statusText, status: e.response.status}
+        });
+    }
+}
+
+
+//Add post
+export const addPost = (formData) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    };
+
+    try {
+        const res = await axios.post('post/add', formData, config);
+
+        dispatch({
+            type: ADD_POST,
+            payload: res.data
+        });
+        dispatch(setAlert('Post Added', 'error', 1000));
     } catch (e) {
         dispatch({
             type: POST_ERROR,

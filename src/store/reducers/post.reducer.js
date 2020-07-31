@@ -1,4 +1,12 @@
-import {GET_POSTS, POST_ERROR, DELETE_POST, UPDATE_LIKES, UPDATE_COMMENTS, DELETE_COMMENT} from "../../utils/actions.types";
+import {
+    GET_POSTS,
+    POST_ERROR,
+    DELETE_POST,
+    UPDATE_LIKES,
+    UPDATE_COMMENTS,
+    DELETE_COMMENT,
+    ADD_POST, GET_POST
+} from "../../utils/actions.types";
 
 const initialState = {
     post: null,
@@ -15,6 +23,18 @@ const postReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: payload,
+                loading: false
+            };
+        case GET_POST:
+            return {
+                ...state,
+                post: payload,
+                loading: false
+            }
+        case ADD_POST:
+            return {
+                ...state,
+                posts: [...state.posts, payload],
                 loading: false
             };
         case POST_ERROR:
