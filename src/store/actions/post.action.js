@@ -110,7 +110,7 @@ export const removeLike = postId => async dispatch => {
 }
 
 //add or update Comment
-export const AddComment = (postId, body) => async dispatch => {
+export const addComment = (postId, body) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json',

@@ -22,6 +22,7 @@ import {Provider} from 'react-redux';
 import store from './store/store';
 import Profile from "./components/Profile/profile";
 import Posts from "./components/Posts/posts";
+import Post from "./components/Post/post";
 
 
 const token = localStorageService.getToken();
@@ -57,6 +58,7 @@ const App = () => {
                         <AuthRoute exact path="/add-experience" component={AddExperience}/>
                         <AuthRoute exact path="/add-education" component={AddEducation}/>
                         <AuthRoute exact path="/posts" component={Posts} />
+                        <AuthRoute exact path="/post/:id" component={Post} />
                     </Switch>
                 </Fragment>
             </Router>
