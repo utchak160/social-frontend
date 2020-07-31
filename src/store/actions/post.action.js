@@ -51,7 +51,7 @@ export const getPost = (id) => async dispatch => {
             type: GET_POST,
             payload: res.data
         });
-        dispatch(setAlert('Post Fetched', 'error', 500));
+        dispatch(setAlert('Post Fetched', 'success', 500));
     } catch (e) {
         dispatch({
             type: POST_ERROR,
@@ -199,7 +199,7 @@ export const addPost = (formData) => async dispatch => {
             type: ADD_POST,
             payload: res.data
         });
-        dispatch(setAlert('Post Added', 'error', 1000));
+        dispatch(setAlert('Post Added', 'success', 500));
     } catch (e) {
         dispatch({
             type: POST_ERROR,
