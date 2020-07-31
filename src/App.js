@@ -21,7 +21,7 @@ import Profiles from "./components/Profiles/profiles";
 import {Provider} from 'react-redux';
 import store from './store/store';
 import Profile from "./components/Profile/profile";
-import Posts from "./components/Post/posts";
+import Posts from "./components/Posts/posts";
 
 
 const token = localStorageService.getToken();

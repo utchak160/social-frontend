@@ -27,7 +27,7 @@ export const getAllPosts = () => async dispatch => {
             type: GET_POSTS,
             payload: res.data
         });
-        dispatch(setAlert('Post fetched', 'success'));
+        dispatch(setAlert('Posts fetched', 'success'));
     } catch (e) {
         dispatch({
             type: POST_ERROR,
@@ -51,7 +51,7 @@ export const getPost = (id) => async dispatch => {
             type: GET_POST,
             payload: res.data
         });
-        dispatch(setAlert('Post Fetched', 'success', 500));
+        dispatch(setAlert('Posts Fetched', 'success', 500));
     } catch (e) {
         dispatch({
             type: POST_ERROR,
@@ -75,7 +75,7 @@ export const addLike = postId => async dispatch => {
             type: UPDATE_LIKES,
             payload: {id: postId, likes: res.data}
         });
-        dispatch(setAlert('Post Liked', 'success', 500));
+        dispatch(setAlert('Posts Liked', 'success', 500));
     } catch (e) {
         dispatch({
             type: POST_ERROR,
@@ -100,7 +100,7 @@ export const removeLike = postId => async dispatch => {
             type: UPDATE_LIKES,
             payload: {id: postId, likes: res.data}
         });
-        dispatch(setAlert('Post UnLiked', 'error', 500));
+        dispatch(setAlert('Posts UnLiked', 'error', 500));
     } catch (e) {
         dispatch({
             type: POST_ERROR,
@@ -174,7 +174,7 @@ export const deletePost = (postId) => async dispatch => {
             type: DELETE_POST,
             payload: postId
         });
-        dispatch(setAlert('Post Deleted', 'error', 500));
+        dispatch(setAlert('Posts Deleted', 'error', 500));
     } catch (e) {
         dispatch({
             type: POST_ERROR,
@@ -199,7 +199,7 @@ export const addPost = (formData) => async dispatch => {
             type: ADD_POST,
             payload: res.data
         });
-        dispatch(setAlert('Post Added', 'success', 500));
+        dispatch(setAlert('Posts Added', 'success', 500));
     } catch (e) {
         dispatch({
             type: POST_ERROR,

@@ -24,7 +24,7 @@ export const PROFILE_ADDED = '[PROFILE] ADDED';
 export const PROFILE_UPDATED = '[PROFILE] UPDATED';
 
 
-//Post Actions
+//Posts Actions
 export const GET_POSTS = '[POST] GET ALL';
 export const GET_POST = '[POST] GET';
 export const ADD_POST = '[POST] ADD';
