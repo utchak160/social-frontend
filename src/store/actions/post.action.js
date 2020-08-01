@@ -27,7 +27,7 @@ export const getAllPosts = () => async dispatch => {
             type: GET_POSTS,
             payload: res.data
         });
-        dispatch(setAlert('Posts fetched', 'success'));
+        dispatch(setAlert('Posts fetched', 'success', 500));
     } catch (e) {
         dispatch({
             type: POST_ERROR,
@@ -122,7 +122,7 @@ export const addComment = (postId, body) => async dispatch => {
 
         dispatch({
             type: UPDATE_COMMENTS,
-            payload: {id: postId, comments: res.data}
+            payload: res.data
         });
         dispatch(setAlert('Comment Added', 'success', 500));
     } catch (e) {
@@ -143,11 +143,11 @@ export const deleteComment = (postId, commentId) => async dispatch => {
     };
 
     try {
-        const res = await axios.put(`post/comment/${postId}/${commentId}`, config);
+        await axios.delete(`post/comment/${postId}/${commentId}`, config);
 
         dispatch({
             type: DELETE_COMMENT,
-            payload: {postId, commentId, comments: res.data}
+            payload: commentId
         });
         dispatch(setAlert('Comment Deleted', 'error', 500));
     } catch (e) {

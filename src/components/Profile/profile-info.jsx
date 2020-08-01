@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import PropTypes from 'prop-types';
 
 const ProfileInfo = ({profile: {user: {name, avatar}, status, company, location, website, social}}) => {
+    console.log(website);
     return (
         <Fragment>
             <div className="profile-top bg-primary p-2">

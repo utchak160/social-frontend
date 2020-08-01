@@ -36,10 +36,6 @@ const App = () => {
         store.dispatch(loadUser());
     }, [])
 
-    window.console.log = function () {
-
-    }
-
     return (
         <Provider store={store}>
             <Router>

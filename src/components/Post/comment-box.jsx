@@ -1,9 +1,9 @@
-import React, {Fragment, useState} from "react";
+import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {addComment} from "../../store/actions/post.action";
 
-const CommentBox = ({addComment}) => {
+const CommentBox = ({addComment, postId}) => {
     const [text, setText] = useState('');
 
     return (
@@ -11,7 +11,11 @@ const CommentBox = ({addComment}) => {
             <div className="bg-primary p">
                 <h3>Leave A Comment</h3>
             </div>
-            <form className="form my-1">
+            <form className="form my-1" onSubmit={event => {
+                event.preventDefault();
+                addComment(postId, {text});
+                setText('');
+            }}>
           <textarea
               name="text"
               cols="30"
@@ -26,3 +30,10 @@ const CommentBox = ({addComment}) => {
         </div>
     )
 }
+
+CommentBox.propTypes = {
+    addComment: PropTypes.func.isRequired,
+    postId: PropTypes.string.isRequired,
+}
+
+export default connect(null, {addComment})(CommentBox);
