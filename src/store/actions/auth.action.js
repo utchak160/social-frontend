@@ -10,11 +10,9 @@ import {
     LOGOUT,
     CLEAR_PROFILE
 } from "../../utils/actions.types";
-import axios from 'axios';
 import {setAlert} from "./alert.action";
 import {localStorageService} from "../../services/localStorage.service";
 import {apiService} from "../../services/api.service";
-// axios.defaults.baseURL = 'http://localhost:5000/api/';
 
 //Load User
 export const loadUser = () => async dispatch => {
@@ -24,7 +22,6 @@ export const loadUser = () => async dispatch => {
     }
 
     try {
-        // const res = await axios.get('user', config);
         const res = await apiService.get('user', '', true )
             dispatch({
                 type: LOAD_USER,
@@ -45,7 +42,6 @@ export const register = ({name, email, password}) => async dispatch => {
     });
     const body = JSON.stringify({name, email, password});
     try {
-        // const res = await axios.post('auth/register', body, config)
         const res = await apiService.post('auth/register', body);
         console.log(res);
 
@@ -75,7 +71,6 @@ export const login = ({email, password}) => async dispatch => {
     });
     const body = JSON.stringify({email, password});
     try {
-        // const res = await axios.post('auth/login', body, config)
         const res = await apiService.post('auth/login', body);
         console.log(res);
 
