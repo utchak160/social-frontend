@@ -1,21 +1,10 @@
 import axios from 'axios';
 import {localStorageService} from "./localStorage.service";
-import {from} from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
 
 class ApiService {
 
-    static _instance;
-
     constructor() {
         axios.defaults.baseURL = 'http:localhost:5000/api/';
-    }
-
-    static getInstance() {
-        if (!this._instance) {
-            this._instance = new ApiService();
-        }
-        return this._instance;
     }
 
     get(endPoint, params, useAuthHeader = false) {
@@ -23,48 +12,36 @@ class ApiService {
             headers: this._buildHeader(useAuthHeader),
             params
         };
-        return from(axios.get(endPoint, config))
-            .pipe(
-                tap(res => console.log(res)),
-                map(res => res.data),
-                catchError(this._handleError)
-            );
+        return (axios.get(endPoint, config)).then((res) => {
+            return res.data;
+        })
     }
 
     post(endPoint, body, useAuthHeader = false) {
         const config = {
             headers: this._buildHeader(useAuthHeader),
         };
-        return from(axios.post(endPoint, body, config))
-            .pipe(
-                tap(res => console.log(res)),
-                map(res => res.data),
-                catchError(this._handleError)
-            );
+        return (axios.post(endPoint, body, config)).then((res) => {
+            return res.data;
+        });
     }
 
     put(endPoint, body, useAuthHeader = false) {
         const config = {
             headers: this._buildHeader(useAuthHeader),
         };
-        return from(axios.post(endPoint, body, config))
-            .pipe(
-                tap(res => console.log(res)),
-                map(res => res.data),
-                catchError(this._handleError)
-            );
+        return (axios.post(endPoint, body, config)).then((res) => {
+            return res.data;
+        });
     }
 
     delete(endPoint, useAuthHeader = false) {
         const config = {
             headers: this._buildHeader(useAuthHeader),
         };
-        return from(axios.delete(endPoint, config))
-            .pipe(
-                tap(res => console.log(res)),
-                map(res => res.data),
-                catchError(this._handleError)
-            );
+        return (axios.delete(endPoint, config)).then((res) => {
+            return res.data;
+        });
     }
 
     _buildHeader(useAuthHeaders) {
@@ -76,11 +53,6 @@ class ApiService {
             };
         }
         return headers;
-    }
-
-    _handleError(error) {
-        //@Todo Handle error as per the response from backend
-        return catchError(error);
     }
 }
 

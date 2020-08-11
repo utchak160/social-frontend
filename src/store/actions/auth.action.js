@@ -13,25 +13,22 @@ import {
 import axios from 'axios';
 import {setAlert} from "./alert.action";
 import {localStorageService} from "../../services/localStorage.service";
-axios.defaults.baseURL = 'http://localhost:5000/api/';
+import {apiService} from "../../services/api.service";
+// axios.defaults.baseURL = 'http://localhost:5000/api/';
 
 //Load User
 export const loadUser = () => async dispatch => {
     const token = localStorage.getItem('token');
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    };
     if (token) {
         localStorageService.setToken(token);
     }
 
     try {
-        const res = await axios.get('user', config);
+        // const res = await axios.get('user', config);
+        const res = await apiService.get('user', '', true )
             dispatch({
                 type: LOAD_USER,
-                payload: res.data
+                payload: res
             })
     } catch (e) {
         dispatch({
@@ -43,22 +40,18 @@ export const loadUser = () => async dispatch => {
 
 //Register User
 export const register = ({name, email, password}) => async dispatch => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
     dispatch({
         type: REGISTER_SENT
     });
     const body = JSON.stringify({name, email, password});
     try {
-        const res = await axios.post('auth/register', body, config)
+        // const res = await axios.post('auth/register', body, config)
+        const res = await apiService.post('auth/register', body);
         console.log(res);
 
         dispatch({
             type: REGISTER_SUCCESS,
-            payload: res.data
+            payload: res
         })
 
         dispatch(loadUser());
@@ -77,22 +70,18 @@ export const register = ({name, email, password}) => async dispatch => {
 
 //Login User
 export const login = ({email, password}) => async dispatch => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
     dispatch({
         type: LOGIN_SENT
     });
     const body = JSON.stringify({email, password});
     try {
-        const res = await axios.post('auth/login', body, config)
+        // const res = await axios.post('auth/login', body, config)
+        const res = await apiService.post('auth/login', body);
         console.log(res);
 
         dispatch({
             type: LOGIN_SUCCESS,
-            payload: res.data
+            payload: res
         })
 
         dispatch(loadUser());
