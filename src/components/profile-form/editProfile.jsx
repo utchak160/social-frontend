@@ -40,7 +40,7 @@ const EditProfile = ({profile: {profile, loading}, getCurrentProfile, addProfile
             instagram: loading && !profile.instagram ? '' : profile.instagram,
             twitter: loading && !profile.twitter ? '' : profile.twitter
         });
-    }, [getCurrentProfile, loading, profile]);
+    }, [getCurrentProfile, loading]);
 
     const {
         company,
@@ -62,6 +62,7 @@ const EditProfile = ({profile: {profile, loading}, getCurrentProfile, addProfile
     }
 
     const onChange = (e) => {
+        console.log(e.target);
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 

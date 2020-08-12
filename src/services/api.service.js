@@ -30,7 +30,7 @@ class ApiService {
         const config = {
             headers: this._buildHeader(useAuthHeader),
         };
-        return (axios.post(endPoint, body, config)).then((res) => {
+        return (axios.put(endPoint, body, config)).then((res) => {
             return res.data;
         });
     }
