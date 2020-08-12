@@ -1,11 +1,9 @@
 import axios from 'axios';
 import {localStorageService} from "./localStorage.service";
 
-class ApiService {
+axios.defaults.baseURL = 'http:localhost:5000/api/';
 
-    constructor() {
-        axios.defaults.baseURL = 'http:localhost:5000/api/';
-    }
+class ApiService {
 
     get(endPoint, params, useAuthHeader = false) {
         const config = {

@@ -7,11 +7,8 @@ import {
     DELETE_COMMENT,
     ADD_POST, GET_POST
 } from "../../utils/actions.types";
-import axios from 'axios'
 import {apiService} from "../../services/api.service";
 import {setAlert} from "./alert.action";
-
-axios.defaults.baseURL = 'http://localhost:5000/api/';
 
 //get All Posts
 export const getAllPosts = () => async dispatch => {

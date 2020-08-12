@@ -23,6 +23,9 @@ import store from './store/store';
 import Profile from "./components/Profile/profile";
 import Posts from "./components/Posts/posts";
 import Post from "./components/Post/post";
+import axios from "axios";
+
+axios.defaults.baseURL = 'http://localhost:5000/api/';
 
 
 const token = localStorageService.getToken();
