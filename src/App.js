@@ -25,8 +25,6 @@ import Posts from "./components/Posts/posts";
 import Post from "./components/Post/post";
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://localhost:5000/api/';
-
 
 const token = localStorageService.getToken();
 if (token) {
@@ -38,7 +36,10 @@ const App = () => {
     const isProduction = process.env.NODE_ENV === 'production';
 
     if (isProduction) {
-        window.console.log = () => {}
+        window.console.log = () => {};
+        axios.defaults.baseURL = 'https://social-backend-api.herokuapp.com/api/';
+    } else {
+        axios.defaults.baseURL = 'http://localhost:5000/api/';
     }
     useEffect(() => {
         store.dispatch(loadUser());
