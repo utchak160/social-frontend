@@ -32,6 +32,11 @@ if (token) {
 
 const App = () => {
 
+    const isProduction = process.env.NODE_ENV === 'production';
+
+    if (isProduction) {
+        window.console.log = () => {}
+    }
     useEffect(() => {
         store.dispatch(loadUser());
     }, [])
