@@ -16,7 +16,6 @@ import {setAlert} from "./alert.action";
 //Get current user profile
 export const getCurrentProfile = () => async dispatch => {
     try {
-        // const res = await axios.get('profile/me', config);
         const res = await apiService.get('profile/me', {}, true);
         dispatch({
             type: GET_PROFILE,
@@ -70,7 +69,6 @@ export const getProfileById = (userId) => async dispatch => {
 //Get user repo
 export const getGithubRepos = (username) => async dispatch => {
     try {
-        // const res = await axios.get(`profile/github/${username}`, config);
         const res = await apiService.get(`profile/github/${username}`);
         console.log(res);
         dispatch({
@@ -122,7 +120,6 @@ export const addExperience = (formData, history) => async dispatch => {
     })
     const body = JSON.stringify(formData);
     try {
-        // const res = await axios.put('profile/experience', body, config);
         const res = await apiService.put('profile/experience', body);
         console.log(res);
         dispatch({
@@ -183,7 +180,6 @@ export const deleteExperience = (id) => async dispatch => {
         type: PROFILE_SENT
     })
     try {
-        // const res = await axios.delete(`profile/experience/${id}`, config);
         const res = await apiService.delete(`profile/experience/${id}`);
         console.log(res);
         dispatch({
@@ -206,7 +202,6 @@ export const deleteEducation = (id) => async dispatch => {
         type: PROFILE_SENT
     })
     try {
-        // const res = await axios.delete(`profile/education/${id}`, config);
         const res = await apiService.delete(`profile/education/${id}`);
         console.log(res);
         dispatch({
@@ -230,7 +225,6 @@ export const deleteAccount = () => async dispatch => {
             dispatch({
                 type: PROFILE_SENT
             });
-            // const res = await axios.delete(`profile`, config);
             const res = await apiService.delete('profile', true);
             console.log(res);
             dispatch({
