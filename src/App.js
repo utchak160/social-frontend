@@ -20,6 +20,8 @@ import Profiles from "./components/Profiles/profiles";
 //Redux
 import {Provider} from 'react-redux';
 import store from './store/store';
+
+
 import Profile from "./components/Profile/profile";
 import Posts from "./components/Posts/posts";
 import Post from "./components/Post/post";

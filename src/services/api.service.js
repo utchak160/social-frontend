@@ -7,7 +7,7 @@ class ApiService {
 
     get(endPoint, params, useAuthHeader = false) {
         const config = {
-            headers: this._buildHeader(useAuthHeader),
+            headers: ApiService._buildHeader(useAuthHeader),
             params
         };
         return (axios.get(endPoint, config)).then((res) => {
@@ -17,7 +17,7 @@ class ApiService {
 
     post(endPoint, body, useAuthHeader = false) {
         const config = {
-            headers: this._buildHeader(useAuthHeader),
+            headers: ApiService._buildHeader(useAuthHeader),
         };
         return (axios.post(endPoint, body, config)).then((res) => {
             return res.data;
@@ -26,7 +26,7 @@ class ApiService {
 
     put(endPoint, body, useAuthHeader = false) {
         const config = {
-            headers: this._buildHeader(useAuthHeader),
+            headers: ApiService._buildHeader(useAuthHeader),
         };
         return (axios.put(endPoint, body, config)).then((res) => {
             return res.data;
@@ -35,14 +35,14 @@ class ApiService {
 
     delete(endPoint, useAuthHeader = false) {
         const config = {
-            headers: this._buildHeader(useAuthHeader),
+            headers: ApiService._buildHeader(useAuthHeader),
         };
         return (axios.delete(endPoint, config)).then((res) => {
             return res.data;
         });
     }
 
-    _buildHeader(useAuthHeaders) {
+    static _buildHeader(useAuthHeaders) {
         let headers = {'Content-Type': 'application/json'}
         if (useAuthHeaders) {
             headers = {
